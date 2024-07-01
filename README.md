@@ -16,7 +16,7 @@ Add `flutter_app_name_localization` to your `pubspec.yaml` file under `dev_depen
 
 \```yaml
 dev_dependencies:
-  flutter_app_name_localization: ^0.0.1
+flutter_app_name_localization: ^0.0.1
 \```
 
 ### Configuration
@@ -25,12 +25,10 @@ Configure your localized app names in the `pubspec.yaml` file under the `flutter
 
 \```yaml
 flutter_app_name_localization:
-  default: "MyApp"
-  locales:
-    - locale: "de"
-      name: "MeineApp"
-    - locale: "fr"
-      name: "MonApp"
+default: "MyApp"
+locales: - locale: "de"
+name: "MeineApp" - locale: "fr"
+name: "MonApp"
 \```
 
 - `default`: The default app name.
@@ -52,12 +50,10 @@ Given the following configuration in `pubspec.yaml`:
 
 \```yaml
 flutter_app_name_localization:
-  default: "MyApp"
-  locales:
-    - locale: "de"
-      name: "MeineApp"
-    - locale: "fr"
-      name: "MonApp"
+default: "MyApp"
+locales: - locale: "de"
+name: "MeineApp" - locale: "fr"
+name: "MonApp"
 \```
 
 Running `flutter pub run flutter_app_name_localization` will update your `AndroidManifest.xml` to use `MeineApp` for German (de) users, `MonApp` for French (fr) users, and `MyApp` for all other users.
@@ -72,11 +68,11 @@ Contributions are welcome! Please open an issue or submit a pull request for any
 
 ### Support
 
-If you encounter any issues or have questions, feel free to open an issue on the [GitHub repository](https://example.com).
+If you encounter any issues or have questions, feel free to open an issue on the [GitHub repository](https://github.com/BubiApps-LTD/flutter_app_name_localization).
 
 ### Maintainers
 
-- [Your Name](https://github.com/your-github-username)
+- [Mahir Taha Ozdin](https://github.com/mahirozdin)
 
 ## Acknowledgments
 
