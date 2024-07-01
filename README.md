@@ -14,22 +14,22 @@
 
 Add `flutter_app_name_localization` to your `pubspec.yaml` file under `dev_dependencies`:
 
-\```yaml
+```yaml
 dev_dependencies:
 flutter_app_name_localization: ^0.0.1
-\```
+```
 
 ### Configuration
 
 Configure your localized app names in the `pubspec.yaml` file under the `flutter_app_name_localization` section:
 
-\```yaml
+```yaml
 flutter_app_name_localization:
 default: "MyApp"
 locales: - locale: "de"
 name: "MeineApp" - locale: "fr"
 name: "MonApp"
-\```
+```
 
 - `default`: The default app name.
 - `locales`: A list of locales and their corresponding app names.
@@ -38,9 +38,9 @@ name: "MonApp"
 
 After configuring your app names, run the following command to update the Android manifest:
 
-\```bash
+```bash
 flutter pub run flutter_app_name_localization
-\```
+```
 
 This command will update the `android:label` attribute in your Android manifest to reflect the localized app names.
 
@@ -48,13 +48,13 @@ This command will update the `android:label` attribute in your Android manifest 
 
 Given the following configuration in `pubspec.yaml`:
 
-\```yaml
+```yaml
 flutter_app_name_localization:
 default: "MyApp"
 locales: - locale: "de"
 name: "MeineApp" - locale: "fr"
 name: "MonApp"
-\```
+```
 
 Running `flutter pub run flutter_app_name_localization` will update your `AndroidManifest.xml` to use `MeineApp` for German (de) users, `MonApp` for French (fr) users, and `MyApp` for all other users.
 
