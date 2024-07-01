@@ -1,7 +1,7 @@
 name: flutter_app_name_localization
 description: A plugin to localize the Android app name.
 author: Mahir Taha Ozdin <mahirozdin@bubiapps.com>
-version: 0.0.1
+version: 0.0.3
 homepage: https://www.linkedin.com/in/mahir-ozdin/
 
 environment:

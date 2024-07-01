@@ -1,5 +1,6 @@
 import 'dart:io';
 import 'package:yaml/yaml.dart';
+import 'dart:ui' show Offset; // Offset sınıfını dart:ui paketinden getir
 
 import 'flutter_app_name_localization_platform_interface.dart';
 
