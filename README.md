@@ -16,7 +16,7 @@ Add `flutter_app_name_localization` to your `pubspec.yaml` file under `dev_depen
 
 ```yaml
 dev_dependencies:
-  flutter_app_name_localization: ^0.0.4
+  flutter_app_name_localization: ^0.0.6
 ```
 
 ### Configuration
@@ -38,13 +38,19 @@ flutter_app_name_localization:
 
 ### Usage
 
-After configuring your app names, run the following command to update the Android manifest:
+1- After configuring your app names, run the following command to update the Android manifest:
 
 ```bash
 dart run flutter_app_name_localization
 ```
 
-This command will update the `android:label` attribute in your Android manifest to reflect the localized app names.
+This command will create values-de and values-fr directories in the `android/app/src/main/res` directory.
+
+2- Update your App name in the `AndroidManifest.xml` file:
+
+```xml
+ android:label="@string/app_name"
+```
 
 ### Example
 
@@ -60,7 +66,30 @@ flutter_app_name_localization:
       name: "MonApp"
 ```
 
-Running `dart run flutter_app_name_localization` will update your `AndroidManifest.xml` to use `MeineApp` for German (de) users, `MonApp` for French (fr) users, and `MyApp` for all other users.
+Running `dart run flutter_app_name_localization` will create the following directories:
+
+```bash
+android/app/src/main/res/values-de
+android/app/src/main/res/values-fr
+```
+
+The `strings.xml` file in the `values-de` directory will contain:
+
+```xml
+<resources>
+    <string name="app_name">MeineApp</string>
+</resources>
+```
+
+The `strings.xml` file in the `values-fr` directory will contain:
+
+```xml
+<resources>
+    <string name="app_name">MonApp</string>
+</resources>
+```
+
+!! Warning !!: You still need to update the `AndroidManifest.xml` file manually. Go to "Usage" section Step2 for more information.
 
 ### License
 
@@ -74,10 +103,11 @@ Contributions are welcome! Please open an issue or submit a pull request for any
 
 If you encounter any issues or have questions, feel free to open an issue on the [GitHub repository](https://github.com/BubiApps-LTD/flutter_app_name_localization).
 
-### Maintainers
+### Contributors
 
-- [Mahir Taha Ozdin](https://github.com/mahirozdin)
-
-## Acknowledgments
-
-- Inspired by the need to simplify localization for Flutter apps.
+- <a href="https://github.com/mahirozdin">
+    <img src="https://avatars.githubusercontent.com/u/9491185?v=4" width="40" height="40" style="border-radius:50%;"/>
+  </a> [Mahir Taha Ozdin](https://github.com/mahirozdin)
+- <a href="https://github.com/maurovanetti">
+    <img src="https://avatars.githubusercontent.com/u/402070?v=4" width="40" height="40" style="border-radius:50%;"/>
+  </a> [Mauro Vanetti](https://github.com/maurovanetti)
