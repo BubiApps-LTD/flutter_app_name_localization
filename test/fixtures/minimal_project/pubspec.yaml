@@ -1,0 +1,14 @@
+name: fixture_app
+description: Fixture project for app name localization tests.
+version: 1.0.0
+
+environment:
+  sdk: ^3.4.0
+
+flutter_app_name_localization:
+  default: "Fixture App"
+  locales:
+    - locale: "tr"
+      name: "Fikstur Uygulamasi"
+    - locale: "de"
+      name: "Beispiel App"

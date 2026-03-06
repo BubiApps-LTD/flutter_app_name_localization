@@ -1,0 +1,12 @@
+.metadata
+android/
+build/
+example/android/
+example/.gitignore
+example/analysis_options.yaml
+example/pubspec.yaml
+example/pubspec.lock
+example/test/
+example/integration_test/
+example/lib/
+example/.dart_tool/

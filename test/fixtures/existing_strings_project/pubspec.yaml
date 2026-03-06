@@ -1,0 +1,12 @@
+name: existing_fixture_app
+description: Fixture project with existing strings.
+version: 1.0.0
+
+environment:
+  sdk: ^3.4.0
+
+flutter_app_name_localization:
+  default: "Updated App"
+  locales:
+    - locale: "es"
+      name: "Aplicacion Actualizada"

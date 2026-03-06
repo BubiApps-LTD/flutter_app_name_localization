@@ -1,113 +1,87 @@
 # flutter_app_name_localization
 
-`flutter_app_name_localization` is a Flutter plugin that simplifies the process of localizing your Android app's name. This plugin reads the app name configuration from your `pubspec.yaml` file and updates the Android manifest accordingly.
+`flutter_app_name_localization` is a build-time CLI for localizing the Android app name in Flutter projects. It reads app-name settings from your Flutter app's `pubspec.yaml` and writes the matching `android/app/src/main/res/values*/strings.xml` files.
 
-## Features
+This package does not register a runtime Flutter plugin.
 
-- Localize the app name for different languages
-- Automatically update the Android manifest
-- Easy configuration via `pubspec.yaml`
+## Install
 
-## Getting Started
-
-### Installation
-
-Add `flutter_app_name_localization` to your `pubspec.yaml` file under `dev_dependencies`:
+Add the package to the Flutter app that needs localized app names:
 
 ```yaml
 dev_dependencies:
-  flutter_app_name_localization: ^0.0.6
+  flutter_app_name_localization: ^0.1.0
 ```
 
-### Configuration
+## Configure
 
-Configure your localized app names in the `pubspec.yaml` file under the `flutter_app_name_localization` section:
+Add a `flutter_app_name_localization` section to the Flutter app's `pubspec.yaml`:
 
 ```yaml
 flutter_app_name_localization:
-  default: "MyApp"
+  default: "My App"
   locales:
+    - locale: "tr"
+      name: "Uygulamam"
     - locale: "de"
-      name: "MeineApp"
-    - locale: "fr"
-      name: "MonApp"
+      name: "Meine App"
 ```
 
-- `default`: The default app name.
-- `locales`: A list of locales and their corresponding app names.
+- `default` is required.
+- `locales` is optional.
+- Locale values are written directly into Android resource qualifiers such as `values-tr` or `values-tr-rTR`.
 
-### Usage
+## Android Manifest
 
-1- After configuring your app names, run the following command to update the Android manifest:
+Set the application label to `@string/app_name` in `android/app/src/main/AndroidManifest.xml`:
+
+```xml
+<application
+    android:label="@string/app_name"
+    ...>
+```
+
+The CLI validates this and prints a warning to `stderr` if the manifest still uses a hard-coded label.
+
+## Usage
+
+Run the tool from the Flutter app root:
 
 ```bash
 dart run flutter_app_name_localization
 ```
 
-This command will create values-de and values-fr directories in the `android/app/src/main/res` directory.
-
-2- Update your App name in the `AndroidManifest.xml` file:
-
-```xml
- android:label="@string/app_name"
-```
-
-### Example
-
-Given the following configuration in `pubspec.yaml`:
-
-```yaml
-flutter_app_name_localization:
-  default: "MyApp"
-  locales:
-    - locale: "de"
-      name: "MeineApp"
-    - locale: "fr"
-      name: "MonApp"
-```
-
-Running `dart run flutter_app_name_localization` will create the following directories:
+Or point it at a specific `pubspec.yaml`:
 
 ```bash
-android/app/src/main/res/values-de
-android/app/src/main/res/values-fr
+dart run flutter_app_name_localization --config path/to/pubspec.yaml
 ```
 
-The `strings.xml` file in the `values-de` directory will contain:
+## Library API
 
-```xml
-<resources>
-    <string name="app_name">MeineApp</string>
-</resources>
+```dart
+import 'package:flutter_app_name_localization/flutter_app_name_localization.dart';
+
+void main() {
+  final result = AppNameLocalizer.localize(pubspecPath: 'pubspec.yaml');
+  for (final file in result.updatedFiles) {
+    print(file);
+  }
+}
 ```
 
-The `strings.xml` file in the `values-fr` directory will contain:
+## Migration From 0.0.6
 
-```xml
-<resources>
-    <string name="app_name">MonApp</string>
-</resources>
+- Runtime Flutter plugin registration has been removed.
+- The package is now a normal Dart package with a typed API and CLI.
+- Release builds no longer generate Android plugin registration for this package.
+- The old MethodChannel-based example app and runtime API are gone.
+
+## Development
+
+```bash
+dart format .
+dart analyze
+dart test
+dart pub publish --dry-run
 ```
-
-!! Warning !!: You still need to update the `AndroidManifest.xml` file manually. Go to "Usage" section Step2 for more information.
-
-### License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
-### Contributing
-
-Contributions are welcome! Please open an issue or submit a pull request for any improvements or bug fixes.
-
-### Support
-
-If you encounter any issues or have questions, feel free to open an issue on the [GitHub repository](https://github.com/BubiApps-LTD/flutter_app_name_localization).
-
-### Contributors
-
-- <a href="https://github.com/mahirozdin">
-    <img src="https://avatars.githubusercontent.com/u/9491185?v=4" width="40" height="40" style="border-radius:50%;"/>
-  </a> [Mahir Taha Ozdin](https://github.com/mahirozdin)
-- <a href="https://github.com/maurovanetti">
-    <img src="https://avatars.githubusercontent.com/u/402070?v=4" width="40" height="40" style="border-radius:50%;"/>
-  </a> [Mauro Vanetti](https://github.com/maurovanetti)

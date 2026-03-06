@@ -1,16 +1,13 @@
-# flutter_app_name_localization_example
+# Example
 
-Demonstrates how to use the flutter_app_name_localization plugin.
+Run the tool from a Flutter app that contains a `flutter_app_name_localization` section in its `pubspec.yaml`:
 
-## Getting Started
+```bash
+dart run flutter_app_name_localization
+```
 
-This project is a starting point for a Flutter application.
+Or call the Dart API directly:
 
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+```bash
+dart run example/flutter_app_name_localization_example.dart
+```

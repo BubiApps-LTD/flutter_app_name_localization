@@ -1,8 +1,3 @@
-import 'dart:io';
-import 'package:args/args.dart';
-import 'package:path/path.dart' as path;
-import 'package:yaml/yaml.dart';
-import 'package:xml/xml.dart';
-
-void main(List<String> arguments) { 
-}
+export 'src/app_name_localization_config.dart';
+export 'src/app_name_localization_result.dart';
+export 'src/app_name_localizer.dart';
